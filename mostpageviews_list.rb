@@ -39,10 +39,9 @@ SCHEDULER.every '1m', :first_in => 0 do
     'ids' => "ga:" + profileID, 
     'start-date' => startDate,
     'end-date' => endDate,
-    'dimensions': 'ga:pageTitle,ga:pagePath',
-    'metrics': 'ga:pageviews,
-    'max-results' => '5',
-    
+    'dimensions'=> "ga:pageTitle",
+    'metrics'=> "ga:pageviews",
+    'max-results' => 5,
   })
  
   # Update the dashboard
