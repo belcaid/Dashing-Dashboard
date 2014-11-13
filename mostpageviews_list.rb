@@ -41,7 +41,8 @@ SCHEDULER.every '1m', :first_in => 0 do
     'end-date' => endDate,
     'dimensions'=> "ga:pageTitle",
     'metrics'=> "ga:pageviews",
-    'max-results' => 5,
+    'max-results' => "5",
+    'sort'=> "-ga:pageviews",
   })
  
   # Update the dashboard
