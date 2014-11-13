@@ -34,17 +34,15 @@ SCHEDULER.every '1m', :first_in => 0 do
   endDate = DateTime.now.strftime("%Y-%m-%d")  # now
  
   
-  $optParams = array(
-      'sort' => 'ga:pageviews',
-      'max-results' => '5');
-  
   # Execute the query
   mostpageviews_List = client.execute(:api_method => analytics.data.ga.get, :parameters => { 
     'ids' => "ga:" + profileID, 
     'start-date' => startDate,
     'end-date' => endDate,
-    'metrics' => "ga:pagePath",
-    $optParams;
+    'dimensions': 'ga:pageTitle,ga:pagePath',
+    'metrics': 'ga:pageviews,
+    'max-results' => '5',
+    
   })
  
   # Update the dashboard
