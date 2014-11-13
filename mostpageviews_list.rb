@@ -46,5 +46,5 @@ SCHEDULER.every '1m', :first_in => 0 do
  
   # Update the dashboard
   # Note the trailing to_i - See: https://github.com/Shopify/dashing/issues/33
-  send_event('mostpageviews_list',   { current: mostpageviews_List.data.rows[0][0].to_i })
+  send_event('mostpageviews_list',   { items: mostpageviews_List.values })
 end
