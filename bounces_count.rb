@@ -38,7 +38,7 @@ SCHEDULER.every '1m', :first_in => 0 do
     'ids' => "ga:" + profileID, 
     'start-date' => startDate,
     'end-date' => endDate,
-    'metrics' => "ga:bounces",
+    'metrics' => "ga:bounceRate",
   })
  
   # Update the dashboard
