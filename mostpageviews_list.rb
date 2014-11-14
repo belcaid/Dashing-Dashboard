@@ -46,5 +46,5 @@ SCHEDULER.every '1m', :first_in => 0 do
   })
  
   # Update the dashboard
-  send_event('mostpageviews_list',   { items: mostpageviews_List.values })
+  send_event('mostpageviews_list',   { items: mostpageviews_List.data })
 end
