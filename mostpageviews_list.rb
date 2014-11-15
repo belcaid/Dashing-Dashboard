@@ -33,18 +33,34 @@ SCHEDULER.every '1m', :first_in => 0 do
   startDate = DateTime.now.strftime("%Y-%m-01") # first day of current month
   endDate = DateTime.now.strftime("%Y-%m-%d")  # now
  
+ # Déclaration des array
+  urlpage = Array.new
+  nbrvues = Array.new
+  results = Array.new
   
   # Execute the query
   mostpageviews_List = client.execute(:api_method => analytics.data.ga.get, :parameters => { 
     'ids' => "ga:" + profileID, 
     'start-date' => startDate,
     'end-date' => endDate,
-    'dimensions'=> "ga:pageTitle",
+    'dimensions'=> "ga:pagePath",
     'metrics'=> "ga:pageviews",
-    'max-results' => "5",
+    'max-results' => 5,
     'sort'=> "-ga:pageviews",
   })
  
+ # Récupération des urls et du nombre de vues séparées
+ urlpage = mostpageviews_List.data.rows.transpose[0]
+ nbrvues = mostpageviews_List.data.rows.transpose[1]
+ 
+ # Affectation des données
+ compteur= 0
+ urlpage.each do |row|
+ results.push({label: urlpage[compteur], value: nbrvues[compteur]})
+ compteur += 1
+ end
+ 
+ 
   # Update the dashboard
-  send_event('mostpageviews_list',   { items: mostpageviews_List.data })
+  send_event('mostpageviews_list',   { items: results })
 end
