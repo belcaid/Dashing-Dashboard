@@ -52,7 +52,11 @@ SCHEDULER.every '30m', :first_in => 0 do
  visites = visitesparmois_Linegraph.data.rows.transpose[1]
  
  # Affectation des données
- results << { x: mois.to_i, y: visites.to_i }
+  compteur = 0
+  mois.each do |row|
+  results << { x: mois[compteur].to_i, y: visites[compteur].to_i }
+  compteur += 1
+end 
  
  
   # Mise à jour du tableau de bord
