@@ -60,5 +60,5 @@ end
  
  
   # Mise à jour du tableau de bord
-  send_event('visitesparmois_linegraph',   { points: results })
+  send_event('visitesparmois_linegraph',   { points: results, graphtype: 'area' })
 end
