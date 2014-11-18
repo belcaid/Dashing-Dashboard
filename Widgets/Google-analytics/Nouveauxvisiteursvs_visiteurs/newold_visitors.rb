@@ -42,15 +42,16 @@ SCHEDULER.every '30m', :first_in => 0 do
     'metrics'=> "ga:percentNewSessions",
   })
  
- # Récupération des urls et du nombre de vues séparées
- anciens_Visiteurs = 100 - nouveaux_Visiteurs.data.row[0][0]
- 
+ # Récupération des données
+ nouveaux_visiteurs = nouveaux_Visiteurs.data.row[0][0].to_i
+ anciens_visiteurs = 100 - nouveaux_visiteurs
+
  data = [
-  { label: "Nouveaux visiteurs", value: nouveaux_Visiteurs.data.row[0][0] },
-  { label: "Anciens visiteurs", value: anciens_Visiteurs },
+  { label: "Nouveaux visiteurs", value: nouveaux_visiteurs },
+  { label: "Anciens visiteurs", value: anciens_visiteurs },
 ]
- 
- 
+
+
   # Mise à jour du tableau de bord
-  send_event('nouveaux_visiteurs',   { value: data })
+  send_event('newold_visitors',   { value: data })
 end
