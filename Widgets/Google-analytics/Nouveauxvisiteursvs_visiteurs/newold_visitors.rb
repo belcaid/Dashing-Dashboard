@@ -43,7 +43,7 @@ SCHEDULER.every '30m', :first_in => 0 do
   })
  
  # Récupération des données
- nouveaux_visiteurs = nouveaux_Visiteurs.data.row[0][0].to_i
+ nouveaux_visiteurs = nouveaux_Visiteurs.data.rows[0][0].to_i
  anciens_visiteurs = 100 - nouveaux_visiteurs
 
  data = [
