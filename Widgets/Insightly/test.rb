@@ -1,11 +1,7 @@
 require 'insightly'
-require 'json'
-require "net/http"
 
 # Api Insightly se trouvant dans le profil de l'utilisateur
 Insightly.api_key = '<your API key>'
-
-
 
 
 
