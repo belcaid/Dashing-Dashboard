@@ -9,7 +9,7 @@ end
 
 # Lancement du rafraichissement
 SCHEDULER.every '1m', :first_in => 0 do
-
+puts contact
   # Update the dashboard
   send_event('test',   { items: contact })
 end
